@@ -1,4 +1,8 @@
 
-$("h1").on("mouseover",function () {
-    $("h1").css("color", "red");
+// $("button").on("click",function () {
+//     $("h1").slideToggle();
+// });
+
+$("button").on("click",function(){
+    $("h1").animate({opacity: 0.5});
 });
