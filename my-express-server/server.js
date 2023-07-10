@@ -15,7 +15,7 @@ app.get('/contact',(req, res) =>{
 });
 
 app.get('/about',(req, res) =>{
-    res.send('<h2>Pauls home-made about page</h2>');
+    res.send('<h2>Paul\'s home-made about page</h2>');
 });
 
 app.listen(3000, function () {
