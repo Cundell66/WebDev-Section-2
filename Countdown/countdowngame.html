@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Countdown Game.</title>
+<meta charset='utf-8'>
+<link rel='stylesheet' href='countdowngame.css'>
+
+</head>
+<body>
+
+<div id="container">
+
+<div id="target_box">
+    <div id="target_number_box">
+        <span id="target">000</span>
+            <div id="start_button">Start</div>
+                <div id="selection_box">
+                    <div class="box" id="box1"></div>
+                    <div class="box" id="box2"></div>
+                    <div class="box" id="box3"></div>
+                    <div class="box" id="box4"></div>
+                    <div class="box" id="box5"></div>
+                    <div class="box" id="box6"></div>
+                </div>
+    </div>
+</div>
+
+<div id="whiteboard">
+    <textarea id="working_area" placeholder="Use this area as a working space..."></textarea>
+</div>
+
+<div id="card_selection_box">
+    <div id="small_number_box">
+        Small number<br/>(1-10)
+            <div class="number_card" id="small_number_card">
+                S
+            </div>
+    </div>
+        <div id="large_number_box">
+            Large number<br/>(25, 50, 75, 100)
+                <div class="number_card" id="large_number_card">
+                    L
+                </div>    
+        </div>
+</div>
+<div id="numbers">       <div class="number" id="number-pos-0">3</div><div class="number" id="number-pos-2">7</div><div class="number" id="number-pos-3">13</div><div class="number" id="number-pos-1" style="z-index: 0; font-size: 32px;">495</div></div>
+</div>
+<div id="operations"> <button id="undo" aria-label="undo"> <span class="icon-undo"></span> </button> <button class="operation" id="+" aria-label="add"> <span class="icon-add"></span> </button> <button class="operation" id="−" aria-label="subtract"> <span class="icon-subtract"></span> </button> <button class="operation" id="×" aria-label="multiply"> <span class="icon-multiply"></span> </button> <button class="operation" id="÷" aria-label="divide"> <span class="icon-divide"></span> </button> </div>
+
+<div id="counter_box">
+    <div id="counter_value_background">
+        <span id="counter_value">30</span>
+    </div>
+    
+</div>
+
+<audio id="audio">
+    <source src="Countdown%20-%20Clock%20Only.mp3" type="audio/mpeg">
+</audio>
+</body>
+<script src="countdowngame.js"></script>
+</html>

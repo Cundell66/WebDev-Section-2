@@ -1,0 +1,214 @@
+*{
+    font-family: monospace, 'Courier New';
+}
+
+html{
+    height: 100%;
+    background: radial-gradient(circle, white, grey);
+}
+
+::placeholder{
+    color: black;
+    opacity: 0.5;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 27px;
+    text-align: left;
+}
+
+#container{
+    width: 600px;
+    height: 1000px;
+    background: blue;
+    margin: 15px auto;
+    position: relative;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1px;
+}
+
+#target_box{
+    width: 500px;
+    height: 200px;
+    background: #17bef6;
+    border-radius: 10px;
+    margin: 15px 45px;
+    position: relative;
+    border: 5px solid grey;
+}
+
+#target_number_box{
+    width: 200px;
+    height: 80px;
+    font-size: 80px;
+    line-height: 80px;
+    margin: 14px 150px;
+    background: black;
+    border: 5px solid grey;
+    color: yellow;
+}
+
+#target{
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 200px; 
+}
+
+#start_button{
+    background: red;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 29px 45px;
+    border-radius: 50px;
+    border: 5px solid grey;
+    cursor: pointer;
+    text-align: center;
+    font-size: 15px;
+    line-height: 50px;
+    color: white;
+}
+
+#start_button:active{
+    top: 5px;
+    border-bottom: none;
+}
+
+#selection_box{
+    position: absolute;
+    background: grey;
+    height: 60px;
+    width: auto;
+    border: 5px solid grey;
+    left: 50px;
+    bottom: 14px;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+.box{
+    float: left;
+    width: 60px;
+    height: 60px;
+    background: blue;
+    margin-right: 6px;
+}
+
+#box6{
+    margin-right: 0;
+}
+
+#whiteboard{
+    background: white;
+    width: 550px;
+    height: 140px;
+    border-radius: 10px;
+    border: 5px solid grey;
+    position: absolute;
+    left: 20px;
+    top: 240px;
+}
+
+#working_area{
+    width: 530px;
+    height: 120px;
+    padding: 10px;
+    margin: 0;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: black;
+    background-image: linear-gradient(to right, #e8eded 1px, transparent 1px), linear-gradient(to bottom, #e8eded 1px, transparent 1px);
+    background-size: 30px 30px;
+    line-height: 27px;
+    resize: none;
+}
+
+#card_selection_box{
+    background: #17bef6;
+    height: 120px;
+    width: 550px;
+    position: absolute;
+    top: 405px;
+    left: 20px;
+    border-radius: 10px;
+    border: 5px solid grey;
+}
+
+#small_number_box{
+    float: left;
+    width: 275px;
+    height: 120px;
+}
+
+#large_number_box{
+    float: right;
+    width: 275px;
+    height: 120px;
+}
+
+.number_card{
+    width: 60px;
+    height: 60px;
+    background: blue;
+    border: 5px solid grey;
+    font-size: 30px;
+    color: white;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+.number_card:active{
+    bottom: 5px;
+    border-bottom: none;
+}
+
+#small_number_card{
+    position: absolute;
+    left: 102.5px;
+    bottom: 10px;
+}
+
+#large_number_card{
+    position: absolute;
+    right: 102.5px;
+    bottom: 10px;
+}
+
+#counter_box{
+    background: #17bef6;
+    height: 120px;
+    width: 550px;
+    position: absolute;
+    top: 405px;
+    left: 20px;
+    border-radius: 10px;
+    border: 5px solid grey;
+    margin: 0;
+    padding: 0;
+    line-height: 120px;
+    font-size: 80px;
+    color: white;
+    display: none;
+}
+
+#counter_value_background{
+    background: red;
+    width: 200px;
+    height: 80px;
+    line-height: 80px;
+    border: 5px solid grey;
+    position: absolute;
+    top: 15px;
+    left: 175px;
+}
+
+.ready {
+  color: 'red'
+}

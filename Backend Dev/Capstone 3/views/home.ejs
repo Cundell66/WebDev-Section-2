@@ -1,0 +1,19 @@
+<%- include("partials/header.ejs") %>
+
+<% if (tasks.length) { %>
+    <% tasks.forEach((task) => { %>
+        <div class ="item" >
+            <input type="checkbox">
+            <p><%= task %></p>
+        </div>
+    <% }) %>
+<% } %>
+
+    <form action="/home" method="POST">
+        <input type="text" name="task" placeholder="To Do">
+        <input type="submit" value="Enter">
+    </form>
+</div>
+
+
+  <%- include("partials/footer.ejs") %>
