@@ -18,7 +18,6 @@ app.get("/", (req, res) => {
 app.get("/noAuth", async (req, res) => {
   try {
     const response = await axios.get(API_URL + "random");
-    const result = response.data;
     res.render("index.ejs", { content: JSON.stringify(response.data) });
     //TODO 2: Use axios to hit up the /random endpoint
     //The data you get back should be sent to the ejs file as "content"
@@ -36,7 +35,6 @@ app.get("/basicAuth", async (req, res) => {
         password: yourPassword,
       },
     });
-    const result = response.data;
     res.render("index.ejs", { content: JSON.stringify(response.data) });
     //TODO 3: Write your code here to hit up the /all endpoint
     //Specify that you only want the secrets from page 2
@@ -64,9 +62,6 @@ app.get("/apiKey", async (req, res) => {
         apiKey: yourAPIKey
       }
     });
-    const result = response.data;
-    // res.render("index.ejs",{content: result[2]});
-    console.log(result);
     res.render("index.ejs", { content: JSON.stringify(response.data) });
     //TODO 4: Write your code here to hit up the /filter endpoint
     //Filter for all secrets with an embarassment score of 5 or greater
@@ -84,13 +79,10 @@ app.get("/bearerToken", async (req, res) => {
         Authorization: `Bearer ${yourBearerToken}`,
       },
     });
-    const result = response.data;
     res.render("index.ejs", { content: JSON.stringify(response.data) });
   } catch (error) {
     res.status(404).send(error.message);
   }
-
-
   //TODO 5: Write your code here to hit up the /secrets/{id} endpoint
   //and get the secret with id of 42
   //HINT: This is how you can use axios to do bearer token auth:
