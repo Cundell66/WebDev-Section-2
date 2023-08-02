@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+Backend Dev/Capstone 4.1/discogs.js
+Backend Dev/Discogs/discogs.js
+./discogs.js

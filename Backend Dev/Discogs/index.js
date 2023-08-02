@@ -1,6 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import {userName, discogsToken} from "./discogs.js";
+
 
 const app = express();
 const port = 3000;
@@ -11,8 +13,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 var count = Math.floor(Math.random()*342);
 var page = 1;
 var total;
-const discogsToken = "FNfVuEjSQXaenuhatQWLbFoxbFJbmOEkpacBBckg";
-const userName = "cundell";
 
 const discogsURL =`https://api.discogs.com/users/${userName}/collection/folders/4061773/releases?token=${discogsToken}`;
 
