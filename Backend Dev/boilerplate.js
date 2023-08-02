@@ -24,3 +24,19 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+
+
+
+app.post("/tracks", async (req, res) => {
+        const id = 199532;
+        const fetchURL = masterURL+`${id}?token=`+discogsToken;
+        console.log(fetchURL);
+        const trackResult = await axios.get(masterURL+`${id}?token=`+discogsToken);
+        
+        var trackList = JSON.stringify(trackResult.tracklist);
+        console.log("tracklist :" + trackList);
+        trackList.forEach((track) => {
+             console.log(`Track ${track.position}: ${track.title} (${track.duration})`);
+        });
+        
+})
