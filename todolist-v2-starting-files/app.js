@@ -70,19 +70,21 @@ app.post("/", function(req, res){
 
   res.redirect("/");
 
-  // if (req.body.list === "Work") {
-  //   workItems.push(item);
-  //   res.redirect("/work");
-  // } else {
-  //   items.push(item);
-  //   res.redirect("/");
-  // }
 });
 
-app.post("/delete", function(req, res){
-  const itemName = req.body;
-  console.log(itemName);
-})
+app.post("/delete",function(req,res){
+  const checkedItemId = req.body.checkbox.trim();
+
+  Item.findByIdAndRemove(checkedItemId)
+  .then(() => {
+      console.log("Succesfully deleted checked item from the database");
+      res.redirect("/");
+  })
+  .catch((err) => {
+      console.log(err);
+  })
+});
+
 
 app.get("/work", function(req,res){
   res.render("list", {listTitle: "Work List", newListItems: workItems});
