@@ -4,6 +4,7 @@ import express from "express";
 import bodyparser from "body-parser";
 import mongoose from "mongoose";
 import _ from "lodash";
+import {password} from "./MongoDB.js";
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.set('view engine', 'ejs');
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/todolistDB", {useNewUrlParser: true});
+mongoose.connect(`mongodb+srv://paulplr:${password}@cluster0.lqswcrx.mongodb.net/todolistDB`, {useNewUrlParser: true});
 
 const itemsSchema = new mongoose.Schema({
   name: {
