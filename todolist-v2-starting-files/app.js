@@ -86,32 +86,31 @@ app.post("/", function(req, res){
 
 app.post("/delete",function(req,res){
   const checkedItemId = req.body.checkbox.trim();
-  const listName = req.body;
-  console.log(listName);
+  const listName = _.capitalize(req.body.listName);
   if (listName === "Today"){
-  Item.findByIdAndRemove(checkedItemId)
-  .then(() => {
-      console.log("Succesfully deleted checked item from the default database");
-      res.redirect("/");
-  })
+    Item.findByIdAndRemove(checkedItemId)
+    .then(() => {
+        console.log("Succesfully deleted checked item from the default database");
+        res.redirect("/");
+    })
   .catch((err) => {
       console.log(err);
   });
-} else {
-  List.findOneAndUpdate({name: listName},{$pull:{items: {_id: checkedItemId}}})
-  .then((foundList) => {
-    console.log(`Succesfully deleted checked item from the ${foundList} database`);
-      res.redirect("/" + listName);
-  })
+  } else {
+    List.findOneAndUpdate({name: listName},{$pull:{items: {_id: checkedItemId}}})
+    .then((foundList) => {
+      console.log(`Succesfully deleted checked item from the ${listName} database`);
+        res.redirect("/" + listName);
+    })
   .catch((err) => {
       console.log(err);
-  })
-}
+    })
+  }
 });
 
 
 app.get("/:userChoice", function(req,res){
-  const destination = req.params.userChoice;
+  const destination = _.capitalize(req.params.userChoice);
 
   List.findOne({name: destination})
     .then(exists => {
