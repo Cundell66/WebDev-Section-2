@@ -24,29 +24,66 @@ const articleSchema = new mongoose.Schema({
  
 const Article = mongoose.model("Article", articleSchema);
 
-app.get("/articles", function(req, res){
-    Article.find()
-    .then((articles)=>{
-        res.send(articles);
-        // articles.forEach(article => {
-        //   res.send(article.title);
-        // });
+app.route("/articles")
+    .get(function(req, res){
+      Article.find()
+      .then((articles)=>{
+          res.send(articles);
+        })
+        .catch((err)=>{
+          console.log(err);
+        });
+  })
+    .post(function(req, res){
+      const newTitle= req.body.title;
+      const newContent= req.body.content;
+      const newArticle = new Article({
+          title: newTitle,
+          content: newContent
+      });
+      // console.log(title, content);
+      newArticle.save();
+  })
+    .delete(function(req, res){
+      Article.deleteMany()
+      .then(()=>{
+        res.send("All articles successfully deleted");
       })
       .catch((err)=>{
         console.log(err);
       });
-})
+  });
 
-app.post("/articles", function(req, res){
-    const newTitle= req.body.title;
-    const newContent= req.body.content;
-    const newArticle = new Article({
-        title: newTitle,
-        content: newContent
+app.route("/articles/:articleTitle")
+  .get(function(req, res){
+    const destination = req.params.articleTitle;
+    Article.findOne({title: destination})
+      .then(foundArticle => {
+        if(foundArticle){
+        res.send(foundArticle);
+      } else {
+        res.send("No articles matching that title");
+      }});
+    })
+  .patch(async function (req, res) {
+    await Article.updateOne({title: req.params.articleTitle},
+      {title: req.body.title, content: req.body.content},
+      )  
+      res.send("Article patched");
+    })
+  .put(async function (req, res) {
+    await Article.replaceOne({title: req.params.articleTitle},
+      {title: req.body.title, content: req.body.content}
+      )  
+      res.send("Article updated");
     });
-    // console.log(title, content);
-    newArticle.save();
-})
+    
+
+// app.get("/articles", )
+
+// app.post("/articles", )
+
+// app.delete("/articles", )
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
