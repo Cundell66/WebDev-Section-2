@@ -40,9 +40,15 @@ app.route("/articles")
       const newArticle = new Article({
           title: newTitle,
           content: newContent
-      });
+      })
+      .then(()=>{
+        newArticle.save();
+      })
+      .catch((err)=>{
+        console.log(err);
+      });;
       // console.log(title, content);
-      newArticle.save();
+      
   })
     .delete(function(req, res){
       Article.deleteMany()
@@ -63,27 +69,43 @@ app.route("/articles/:articleTitle")
         res.send(foundArticle);
       } else {
         res.send("No articles matching that title");
-      }});
+      }})
+      .catch((err)=>{
+        console.log(err);
+      });
     })
   .patch(async function (req, res) {
     await Article.updateOne({title: req.params.articleTitle},
-      {title: req.body.title, content: req.body.content},
-      )  
-      res.send("Article patched");
+      req.body
+      )
+      .then(()=>{
+        res.send("Article patched");
+      })
+      .catch((err)=>{
+        console.log(err);
+      });  
+      
     })
   .put(async function (req, res) {
     await Article.replaceOne({title: req.params.articleTitle},
       {title: req.body.title, content: req.body.content}
-      )  
-      res.send("Article updated");
+      )
+      .then(()=>{
+        res.send("Article updated");
+      })
+      .catch((err)=>{
+        console.log(err);
+      });  
+    })
+  .delete(async function(req, res){
+    await Article.deleteOne({title: req.params.articleTitle})
+    .then(()=>{
+      res.send("Article deleted");
+    })
+    .catch((err)=>{
+      console.log(err);
     });
-    
-
-// app.get("/articles", )
-
-// app.post("/articles", )
-
-// app.delete("/articles", )
+  });
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
