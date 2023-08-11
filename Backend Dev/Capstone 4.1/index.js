@@ -22,7 +22,7 @@ const masterURL = 'https://api.discogs.com/masters/';
 // generate random number to select random title
 function getRandomNumber(max) {
   return Math.floor(Math.random() * max);
-}
+};
 
 // steps used in both post and get gathered together in function
 async function fetchContents() {
