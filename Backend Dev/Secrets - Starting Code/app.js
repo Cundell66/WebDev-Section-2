@@ -4,7 +4,9 @@ import ejs from "ejs";
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import md5 from "md5";
+import bcrypt from "bcrypt";
+
+const saltRounds = 10;
 
 const app = express();
 
@@ -38,18 +40,25 @@ app.get("/register", function(req, res){
 });
 
 app.post("/register", function(req, res){
-    const newUser = new User({
-        email: req.body.username,
-        password: md5(req.body.password)
-    })
-    newUser.save()
-    .then(()=>{
-        console.log("New User Added");
-        res.render("secrets");
+    bcrypt.hash(req.body.password, saltRounds)
+    .then((hash)=>{
+        const newUser = new User({
+            email: req.body.username,
+            password: hash
+        })
+        newUser.save()
+        .then(()=>{
+            console.log("New User Added");
+            res.render("secrets");
+        })
+        .catch((err)=>{
+            console.log(err);
+        });    
     })
     .catch((err)=>{
         console.log(err);
-    });
+    }); 
+    
 });
 
 app.post("/login", function(req, res){
@@ -58,19 +67,23 @@ app.post("/login", function(req, res){
     User.findOne({email: username})
     .then((foundUser)=>{
         if (foundUser){
-            if (foundUser.password === password){
-                res.render("secrets");
+            bcrypt.compare(password, hash)
+            .then{(res)=>{
+                if(res){
+                    res.render('secrets');
             } else {
                 res.redirect("login");
-            }
+            }})
+            .catch((err)=>{
+                console.log(err);
+            })  
         } else {
             res.send("No Such User");
         }
-      })
+      )
       .catch((err)=>{
         console.log(err);
       });
-})
 
 app.listen(3000, function(){
     console.log("Server started on port 3000.");
