@@ -1,0 +1,42 @@
+h1{
+    text-align: center;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-rows: 1fr;
+    
+}
+.image{
+    height: 300px;
+    width: 300px;
+}
+.title{
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+.artist{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
+}
+.form {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10% 10% 1fr;
+    grid-column-gap: 10px;
+  }
+.form-submit {
+    outline: none;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(56, 56, 56);
+    border-radius: 5px;
+    width: 100px;
+    cursor: pointer;
+    color: aliceblue;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 18px;
+    box-shadow: 0 0 0 0.5px rgb(153, 153, 153);
+  }

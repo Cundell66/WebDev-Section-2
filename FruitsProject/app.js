@@ -79,7 +79,7 @@ const orange = new Fruit({
 const banana = new Fruit({
     name: "Banana",
     rating: 8,
-    review: "The Digestive Fruit!"
+    review: "The Digestive  Fruit!"
 });
  
 //In latest version of mongoose insertMany has stopped accepting callbacks
